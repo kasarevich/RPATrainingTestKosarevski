@@ -3,7 +3,7 @@ package model;
 import java.util.Objects;
 
 public class Vegetable {
-    
+
     private String name;
     private int caloriesIn100g;
     private String type;
