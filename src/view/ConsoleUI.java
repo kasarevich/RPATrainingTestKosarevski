@@ -1,5 +1,6 @@
 package view;
 
+import controller.Cook;
 import model.Menu;
 
 import java.io.BufferedReader;
@@ -50,10 +51,8 @@ public class ConsoleUI implements UI {
                     break;
                 }
             }
-            //Fixme manager.prepare(salad);
             if(salad!=null) {
-                showMessageToUser(salad.toString());
-                showSaladOptions();
+                Cook.getInstance().prepareSalad(salad);
             }
     }
 

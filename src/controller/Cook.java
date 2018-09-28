@@ -39,13 +39,28 @@ public class Cook {
     }
 
     private void showSaladDetails() {
+        StringBuilder sb = new StringBuilder();
+        int sumCal = 0;
+        int sumWeigth = 0;
+        for(Map.Entry entry : salad.entrySet()){
+                Vegetable veg = (Vegetable) entry.getKey();
+                int calories = calculateCalories(veg, (int)entry.getValue());
+                int weighth = (int)entry.getValue();
+                sb.append(veg.getName() + "\t" + veg.getType() + "\t" + veg.getCaloriesIn100g() + " in 100 \t"
+                        + String.valueOf(calories)+ "\t" + String.valueOf(weighth) + " g\n");
+                sumCal += calories;
+                sumWeigth += weighth;
+        }
+        sb.append("\n\t\t Weight of salad is" + String.valueOf(sumWeigth) + " g.");
+        sb.append("\n\t\t Calories of salad is" + String.valueOf(sumCal) + " ccal.");
 
+        ui.showMessageToUser(sb.toString());
     }
 
-    private int calculateCalories(int weight, int calIn100){
-        int cal;
-
-        return cal;
+    private int calculateCalories(Vegetable vegetable, int weight){
+        float cal;
+        cal = ((float) vegetable.getCaloriesIn100g() * weight / 100);
+        return (int)Math.round(cal);
     }
 }
 
