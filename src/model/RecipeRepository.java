@@ -4,38 +4,38 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RecipeRepository {
-    public static Map<Integer, Vegetable>getRecipeOf(Menu menu){
-        Map<Integer, Vegetable> recipe = new HashMap<>();
+    public static Map<Vegetable, Integer>getRecipeOf(Menu menu){
+        Map<Vegetable, Integer> recipe = new HashMap<>();       //Vegetable, Weight
         switch (menu){
             case CAESAR: {
-                recipe.put(200, new Vegetable("Cherry-tomato", 20, "fruit"));
-                recipe.put(400, new Vegetable("Salad", 14, "greens"));
-                recipe.put(20, new Vegetable("Garlic", 143, "greens"));
-                recipe.put(50, new Vegetable("Lemon", 16, "fruit"));
+                recipe.put(new Vegetable("Cherry-tomato", 20, "fruit"), 200);
+                recipe.put(new Vegetable("Salad", 14, "greens"), 400);
+                recipe.put(new Vegetable("Garlic", 143, "greens"), 20);
+                recipe.put(new Vegetable("Lemon", 16, "fruit"), 50);
                 break;
             }
             case GREEK:{
-                recipe.put(200, new Vegetable("Cherry-tomato", 20, "fruit"));
-                recipe.put(100, new Vegetable("Salad", 14, "greens"));
-                recipe.put(60, new Vegetable("Onion", 47, "greens"));
-                recipe.put(40, new Vegetable("Lemon", 16, "fruit"));
-                recipe.put(150, new Vegetable("Cucumber", 15, "fruit"));
-                recipe.put(50, new Vegetable("Olives", 166, "fruit"));
-                recipe.put(70, new Vegetable("Pepper", 27, "greens"));
+                recipe.put(new Vegetable("Cherry-tomato", 20, "fruit"), 200);
+                recipe.put(new Vegetable("Salad", 14, "greens"), 100);
+                recipe.put(new Vegetable("Onion", 47, "greens"), 60);
+                recipe.put(new Vegetable("Lemon", 16, "fruit"), 40);
+                recipe.put(new Vegetable("Cucumber", 15, "fruit"), 150);
+                recipe.put(new Vegetable("Olives", 166, "fruit"), 50);
+                recipe.put(new Vegetable("Pepper", 27, "greens"), 70);
                 break;
             }
             case FRESH:{
-                recipe.put(400, new Vegetable("Cabbage", 27, "greens"));
-                recipe.put(120, new Vegetable("Pepper", 27, "greens"));
-                recipe.put(100, new Vegetable("Carrot", 33, "greens"));
+                recipe.put(new Vegetable("Cabbage", 27, "greens"), 400);
+                recipe.put(new Vegetable("Pepper", 27, "greens"), 120);
+                recipe.put(new Vegetable("Carrot", 33, "greens"), 100);
                 break;
             }
             case FRUIT:{
-                recipe.put(200, new Vegetable("Apple", 47, "fruit"));
-                recipe.put(180, new Vegetable("Pear", 42, "fruit"));
-                recipe.put(150, new Vegetable("Kiwi", 44, "fruit"));
-                recipe.put(100, new Vegetable("Orange", 36, "fruit"));
-                recipe.put(70, new Vegetable("Grape", 165, "fruit"));
+                recipe.put(new Vegetable("Apple", 47, "fruit"), 200);
+                recipe.put(new Vegetable("Pear", 42, "fruit"), 180);
+                recipe.put(new Vegetable("Kiwi", 44, "fruit"), 150);
+                recipe.put(new Vegetable("Orange", 36, "fruit"), 100);
+                recipe.put(new Vegetable("Grape", 165, "fruit"), 70);
                 break;
             }
             default:{
