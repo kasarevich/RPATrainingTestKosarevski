@@ -8,18 +8,17 @@ public class RecipeRepository {
         Map<Vegetable, Integer> recipe = new HashMap<>();       //Vegetable, Weight
         switch (menu){
             case CAESAR: {
-                recipe.put(new Vegetable("Cherry-tomato", 20, "fruit"), 200);
+                recipe.put(new Vegetable("Tomato", 20, "fruit"), 200);
                 recipe.put(new Vegetable("Salad", 14, "greens"), 400);
                 recipe.put(new Vegetable("Garlic", 143, "greens"), 20);
                 recipe.put(new Vegetable("Lemon", 16, "fruit"), 50);
                 break;
             }
             case GREEK:{
-                recipe.put(new Vegetable("Cherry-tomato", 20, "fruit"), 200);
+                recipe.put(new Vegetable("Tomato", 20, "fruit"), 200);
                 recipe.put(new Vegetable("Salad", 14, "greens"), 100);
                 recipe.put(new Vegetable("Onion", 47, "greens"), 60);
                 recipe.put(new Vegetable("Lemon", 16, "fruit"), 40);
-                recipe.put(new Vegetable("Cucumber", 15, "fruit"), 150);
                 recipe.put(new Vegetable("Olives", 166, "fruit"), 50);
                 recipe.put(new Vegetable("Pepper", 27, "greens"), 70);
                 break;

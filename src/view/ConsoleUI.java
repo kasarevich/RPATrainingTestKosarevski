@@ -7,19 +7,20 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+
 public class ConsoleUI implements UI {
+
     @Override
     public void showMainMenu() {
             System.out.println("\tEnter to cook:" +
-                    "\n\t1 - Greec salad" +
+                    "\n\t1 - Greek salad" +
                     "\n\t2 - Caesar salad" +
                     "\n\t3 - Fresh salad" +
                     "\n\t4 - Fruit salad" +
                     "\n\t0 - Exit.");
             String i = null;
             try {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-                i = reader.readLine();
+                i = readChoise();
             } catch (IOException e) {
                 showMessageToUser(e.getMessage());
             }
@@ -42,11 +43,11 @@ public class ConsoleUI implements UI {
                     break;
                 }
                 case "0": {
-                    System.out.println("Завершение работы...");
+                    System.out.println("Good bye!");
                     break;
                 }
                 default: {
-                    System.out.println("Неверный ввод!");
+                    System.out.println("Incorrect input data");
                     showMainMenu();
                     break;
                 }
@@ -62,64 +63,78 @@ public class ConsoleUI implements UI {
                 "\n\t1 to sort vegetables by weight" +
                 "\n\t2 to sort vegetables by calories" +
                 "\n\t3 to find vegetables" +
-                "\n\t0 - exit to main menu.");
+                "\n\t0 back to the main menu.");
         String i = null;
         try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            i = reader.readLine();
+            i = readChoise();
         } catch (IOException e) {
             showMessageToUser(e.getMessage());
         }
         switch (i) {
             case "1": {
-                sortByWeight();
+                Cook.getInstance().sortVegetables(true);
                 break;
             }
             case "2": {
-                sortByCalories();
+                Cook.getInstance().sortVegetables(false);
                 break;
             }
             case "3": {
-                findVegetables();
+                showSearchMenu();
                 break;
             }
             case "0": {
-                System.out.println("Завершение работы...");
-                //Fixme продумать выход
+                showMainMenu();
                 break;
             }
             default: {
-                System.out.println("Неверный ввод!");
+                System.out.println("Incorrect input data");
                 showSaladOptions();
                 break;
             }
         }
     }
 
-    private void findVegetables() {
-        showMessageToUser("find");
-    }
-
-    private void sortByCalories() {
-        showMessageToUser("by cal");
-    }
-
-    private void sortByWeight() {
-        showMessageToUser("by weight");
-    }
-
-    @Override
-    public void showSortedVegetables() {
-
-    }
 
     @Override
     public void showSearchMenu() {
+        int min = 0;
+        int max = 0;
+        try {
+            System.out.println("Enter min weight");
+            String minWeight = readChoise();
+            min = Integer.parseInt(minWeight);
+            System.out.println("Enter max weight");
+            String maxWeight = readChoise();
+            max = Integer.parseInt(maxWeight);
+        }catch (NullPointerException np){
+            //Fixme print only digits
+            showMessageToUser("Enter data please");
+            showSearchMenu();
+        }catch (NumberFormatException numEx){
+            //Fixme print only digits
+            showMessageToUser("Enter a digits please");
+            showSearchMenu();
+        }catch (IOException ioEx){
+            //Fixme ioEx
+            showMessageToUser("Incorrect input data");
+            showSearchMenu();
+        }
+        if(min != 0 || max != 0)
+        Cook.getInstance().searchVegetable(min, max);
+    }
 
+
+    private String readChoise()throws IOException{
+        String i = null;
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            i = reader.readLine();
+        return i;
     }
 
     @Override
     public void showMessageToUser(String message) {
         System.out.println(message);
     }
+
 }
